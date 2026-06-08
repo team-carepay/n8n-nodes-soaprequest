@@ -1,73 +1,77 @@
 {
-  "name": "n8n-nodes-soaprequest",
-  "version": "1.1.0",
-  "description": "n8n node for soap requests",
-  "keywords": [
-    "n8n-community-node-package",
-    "soap-request",
-    "soap"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/team-carepay/n8n-nodes-soaprequest#README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/team-carepay/n8n-nodes-soaprequest.git"
-  },
-  "main": "index.js",
-  "author": {
-    "name": "Mischa Dasberg",
-    "email": "m.dasberg@carepay.com"
-  },
-  "scripts": {
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "semantic-release": "semantic-release"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/SoapApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/SoapRequest/SoapRequest.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
-    "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/commit-analyzer": "12.0.0",
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "10.0.5",
-    "@semantic-release/npm": "12.0.1",
-    "@semantic-release/release-notes-generator": "13.0.0",
-    "@typescript-eslint/parser": "7.10",
-    "commitizen": "4.3.0",
-    "eslint-plugin-n8n-nodes-base": "1.16.1",
-    "gulp": "5.0.0",
-    "n8n-workflow": "*",
-    "prettier": "3.2.5",
-    "semantic-release": "23.1.1",
-    "typescript": "5.4.5"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "@types/xml2js": "0.4.14",
-    "@xmldom/xmldom": "0.8.10",
-    "xml2js": "0.6.2",
-    "xpath": "0.0.34"
-  }
+	"name": "n8n-nodes-soaprequest",
+	"version": "1.2.0",
+	"description": "n8n node for soap requests",
+	"keywords": [
+		"n8n-community-node-package",
+		"soap-request",
+		"soap"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/team-carepay/n8n-nodes-soaprequest#README.md",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/team-carepay/n8n-nodes-soaprequest.git"
+	},
+	"main": "index.js",
+	"author": {
+		"name": "Mischa Dasberg",
+		"email": "m.dasberg@carepay.com"
+	},
+	"scripts": {
+		"build": "tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier nodes credentials --write",
+		"lint": "eslint nodes credentials package.json",
+		"lintfix": "eslint nodes credentials package.json --fix",
+		"semantic-release": "semantic-release"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/SoapApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/SoapRequest/SoapRequest.node.js"
+		]
+	},
+	"devDependencies": {
+		"@commitlint/cli": "21.0.2",
+		"@commitlint/config-conventional": "21.0.2",
+		"@semantic-release/changelog": "6.0.3",
+		"@semantic-release/commit-analyzer": "13.0.1",
+		"@semantic-release/git": "10.0.1",
+		"@semantic-release/github": "12.0.8",
+		"@semantic-release/npm": "13.1.5",
+		"@semantic-release/release-notes-generator": "14.1.1",
+		"@typescript-eslint/parser": "8.60",
+		"commitizen": "4.3.1",
+		"eslint-plugin-n8n-nodes-base": "1.16.6",
+		"gulp": "5.0.1",
+		"n8n-workflow": "^2.12.0",
+		"prettier": "3.8.3",
+		"semantic-release": "25.0.3",
+		"typescript": "6.0.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"overrides": {
+		"tmp": "0.2.7",
+		"lodash": "4.18.1"
+	},
+	"dependencies": {
+		"@types/xml2js": "0.4.14",
+		"@xmldom/xmldom": "0.9.10",
+		"xml2js": "0.6.2",
+		"xpath": "0.0.34"
+	}
 }
