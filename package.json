@@ -72,7 +72,7 @@
 	},
 	"dependencies": {
 		"@types/xml2js": "0.4.14",
-		"@xmldom/xmldom": "0.9.10",
+		"@xmldom/xmldom": "0.9.12",
 		"xml2js": "0.6.2",
 		"xpath": "0.0.34"
 	}
