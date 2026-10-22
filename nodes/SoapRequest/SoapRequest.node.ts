@@ -4,7 +4,16 @@ import {
     INodeType,
     INodeTypeDescription,
 } from 'n8n-workflow';
-import {CONVERT_TO_JSON, METHOD, SEND_HEADERS, soapOperations, URL} from "./Soap.operations";
+import {
+    CONVERT_TO_JSON,
+    HTTP_HEADERS,
+    METHOD,
+    SEND_HEADERS,
+    SEND_HTTP_HEADERS,
+    soapOperations,
+    URL
+} from "./Soap.operations";
+import {HttpHeader, mergeHeaders} from "./HttpHeaders";
 import {
     interpolateSOAPBodyCredentials,
     interpolateSOAPHeaderCredentials
@@ -60,11 +69,19 @@ export class SoapRequest implements INodeType {
 
         const convertToJson = (this.getNodeParameter(CONVERT_TO_JSON, 0, false) as boolean);
 
+        const sendHttpHeaders = (this.getNodeParameter(SEND_HTTP_HEADERS, 0, false) as boolean);
+        const httpHeaders = sendHttpHeaders
+            ? (this.getNodeParameter(`${HTTP_HEADERS}.header`, 0, []) as HttpHeader[])
+            : [];
+
         const options: any = {
-            headers: {
-                'Content-Type': 'application/soap+xml',
-                'Accept': 'application/soap+xml',
-            },
+            headers: mergeHeaders(
+                {
+                    'Content-Type': 'application/soap+xml',
+                    'Accept': 'application/soap+xml',
+                },
+                httpHeaders,
+            ),
             method: method,
             uri: url,
             body: soapMessage,
