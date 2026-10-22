@@ -12,6 +12,11 @@ you to not worry about the soap boilerplate in your n8n workflows.
   can use the `interpolate` function. This allows you to use **_{{ $credentials.username }}_** and **_{{
   $credentials.password }}_** in your template and it will be interpolated with the selected SOAP API
   credentials.
+- **HTTP headers**: Enable **Send HTTP Headers** to add arbitrary HTTP request headers, such as
+  `SOAPAction`. These are separate from **SOAP Headers**, which are XML placed inside **soap:Header**.
+  A header with the same name (case-insensitive) as a default replaces it, so the default
+  `Content-Type: application/soap+xml` can be overridden, for example to supply a SOAP 1.2 action:
+  `application/soap+xml; charset=utf-8; action="http://example.com/MyAction"`.
 
 ## Installation
 

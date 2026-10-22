@@ -32,8 +32,10 @@ const requestMethods = [
 ];
 
 export const CONVERT_TO_JSON = 'convertToJson';
+export const HTTP_HEADERS = 'httpHeaders';
 export const METHOD = 'method';
 export const SEND_HEADERS = 'sendHeaders';
+export const SEND_HTTP_HEADERS = 'sendHttpHeaders';
 export const SOAP_BODY = 'soapBody';
 export const SOAP_HEADERS = 'soapHeaders';
 export const URL = 'url';
@@ -56,7 +58,50 @@ export const soapOperations: INodeProperties[] = [
         type: 'string'
     },
     {
-        displayName: 'Send Headers',
+        displayName: 'Send HTTP Headers',
+        name: SEND_HTTP_HEADERS,
+        type: 'boolean',
+        default: false,
+        noDataExpression: true,
+        description: 'Whether to send additional HTTP request headers, e.g. SOAPAction. Headers named here override the default Content-Type and Accept headers.',
+    },
+    {
+        displayName: 'HTTP Headers',
+        name: HTTP_HEADERS,
+        type: 'fixedCollection',
+        typeOptions: {
+            multipleValues: true,
+        },
+        placeholder: 'Add Header',
+        displayOptions: {
+            show: {
+                sendHttpHeaders: [true]
+            },
+        },
+        default: {},
+        options: [
+            {
+                displayName: 'Header',
+                name: 'header',
+                values: [
+                    {
+                        displayName: 'Name',
+                        name: 'name',
+                        type: 'string',
+                        default: '',
+                    },
+                    {
+                        displayName: 'Value',
+                        name: 'value',
+                        type: 'string',
+                        default: '',
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        displayName: 'Send SOAP Headers',
         name: SEND_HEADERS,
         type: 'boolean',
         default: false,
@@ -64,8 +109,9 @@ export const soapOperations: INodeProperties[] = [
         description: 'Whether the SOAP request has a header section or not',
     },
     {
-        displayName: 'Headers',
+        displayName: 'SOAP Headers',
         name: SOAP_HEADERS,
+        description: 'XML placed inside the &lt;soap:Header&gt; element of the envelope. These are not HTTP headers.',
         type: 'string',
         typeOptions: {
             rows: 3,
